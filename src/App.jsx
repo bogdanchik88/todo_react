@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import './App.css'
+import useTodosStore from "./store/useTodosStore"
 
 function App() {
+
+  const todos = useTodosStore(state => state.todos)
 
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           Tailwind успешно установлен в Vite + React приложении
         </p>
       </div>
+      <button onClick={() => console.log(todos)}>show todos</button>
     </>
   )
 }
