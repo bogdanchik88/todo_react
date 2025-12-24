@@ -6,15 +6,25 @@ function App() {
 
   return (
     <>
-      <div className="mt-[25vh] h-[50vh] bg-gray-100 flex items-center justify-center px-[100px] rounded-[10px]">
-        <h1 className="text-4xl font-bold text-cyan-400 pr-[30px]">
-          Hello Tailwind CSS!
-        </h1>
-        <p className="mt-4 text-gray-700">
-          Tailwind успешно установлен в Vite + React приложении
-        </p>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-3">
+        <div className="flex flex-col gap-2 justify-start">
+          <label htmlFor="Title">Title</label>
+          <input type="text" id="Title" placeholder="Enter title..."/>
+
+          <label htmlFor="Description">Description</label>
+          <input type="text" id="Description" placeholder="Enter description"/>          
+        </div>
+
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id} className="flex gap-2">
+              <input type="checkbox" checked={todo.completed} />
+              <span>{todo.title}</span>
+              {todo.description && <span>{todo.description}</span>}
+            </li>
+          ))}
+        </ul>
       </div>
-      <button onClick={() => console.log(todos)}>show todos</button>
     </>
   )
 }
