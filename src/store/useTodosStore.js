@@ -1,6 +1,7 @@
-import { create } from "zustand";
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
 
-const useTodosStore = create((set, get) => ({
+const useTodosStore = create(persist((set, get) => ({
     todos: [{id: crypto.randomUUID(), title: 'todo1', description: 'description 1', completed: false}, 
             {id: crypto.randomUUID(), title: 'todo2', description: '', completed: true}],
 
@@ -22,6 +23,9 @@ const useTodosStore = create((set, get) => ({
             todo.id === id ? {...todo, completed: !todo.completed} : todo
         ))})
     }
+}), 
+{
+    name: 'todoStore'
 }))
 
 export default useTodosStore
