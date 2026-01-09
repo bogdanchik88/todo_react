@@ -4,4 +4,14 @@
 
 @theme{
     --font-Yantramanav: Yantramanav, sans-serif;
+
+    --color-primary: #4F46E5;
+    --color-secondary: #6366F1;
+    --color-success: #22C55E;
+    --color-danger: #EF4444;
+
+    --color-bg: #F9FAFB;
+    --color-card: #FFFFFF;
+    --color-border: #E5E7EB;
+    --color-text: #111827;
 }
