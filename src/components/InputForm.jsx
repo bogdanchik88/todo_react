@@ -1,9 +1,9 @@
 import { useRef } from "react"
 import useTodosStore from "../store/useTodosStore"
-import { ClipboardPlus } from "lucide-react"
+import { ClipboardPlus, Github } from "lucide-react"
 
 const InputForm = () => {
-  const addTodo = useTodosStore(state => state.addTodo)
+  const addTodo = useTodosStore((state) => state.addTodo)
 
   const titleRef = useRef(null)
   const descriptionRef = useRef(null)
@@ -26,40 +26,85 @@ const InputForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-row gap-12 w-[95%] justify-start"
+      className="border-b-4 border-b-primary"
     >
-      <div className="flex flex-col justify-start gap-4 w-[70%] text-lg">
-        <div className="flex flex-col gap-1 justify-start">
+      <div className="flex flex-col gap-4 text-lg mb-4">
+
+        {/* Title + GitHub link */}
+        <div className="flex flex-row items-center gap-6">
           <input
             id="title"
             type="text"
             placeholder="Enter title..."
             ref={titleRef}
             required
-            className="border-2 border-black px-4 py-1 rounded-2xl focus:border-2 outline-none
-              focus:ring-2 focus: ring-red-200 focus:border-red-500
-                transition-colors duration-300"
-          />        
+            minLength={3}
+            maxLength={20}
+            className="
+              border-2 border-border
+              px-4 py-1
+              rounded-2xl
+              outline-none
+              w-[75%]
+              text-primary
+              placeholder-border
+              focus:border-primary
+              transition-colors duration-300 ease-in-out
+            "
+          />
+
+          <a
+            href="https://github.com/bogdanchik88"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github
+              className="
+                size-12
+                hover:scale-[120%]
+                active:scale-[100%]
+                transition-transform duration-200 ease-in-out
+              "
+            />
+          </a>
         </div>
 
-        <div className="flex flex-col gap-1 justify-start">
-          <input
+        {/* Description + Submit button */}
+        <div className="flex flex-row items-center gap-6">
+          <textarea
             id="description"
-            type="text"
             placeholder="Enter description..."
             ref={descriptionRef}
-            className="border-2 border-border px-4 py-1 rounded-2xl outline-none
-              focus:border-primary"
-          />        
-        </div>        
-      </div>
+            className="
+              border-2 border-border
+              px-4 py-1
+              rounded-2xl
+              outline-none
+              w-[75%]
+              text-primary
+              placeholder-border
+              focus:border-primary
+              transition-colors duration-300 ease-in-out
+            "
+          />
 
-      <button
-        type="submit"
-        className="cursor-pointer"
-      ><ClipboardPlus className="p-1 text-success size-10
-        transition-colors duration-100"/>
-      </button>
+          <button type="submit" className="cursor-pointer">
+            <ClipboardPlus
+              className="
+                text-primary
+                size-12
+                rounded-2xl
+                hover:text-secondary
+                hover:scale-[120%]
+                transition-colors duration-100
+                motion-safe:transition-transform motion-safe:duration-150
+                active:scale-[100%] active:text-primary
+              "
+            />
+          </button>
+        </div>
+
+      </div>
     </form>
   )
 }
