@@ -1,1 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Yantramanav:100,300,regular,500,700,900);
+
 @import "tailwindcss";
+
+@theme{
+    --font-Yantramanav: Yantramanav, sans-serif;
+}
