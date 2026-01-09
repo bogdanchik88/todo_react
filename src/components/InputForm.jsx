@@ -2,34 +2,55 @@ import { useRef } from "react"
 import useTodosStore from "../store/useTodosStore"
 
 const InputForm = () => {
-    const addTodo = useTodosStore(state => state.addTodo)
-    
-    const titleRef = useRef('')
-    const descriptionRef = useRef('')
-    
-    const handleAddTodo = () => {
-        const title = titleRef.current.value.trim()
-        const description = descriptionRef.current.value.trim()
+  const addTodo = useTodosStore(state => state.addTodo)
 
-        if(title){
-        addTodo(title, description)
+  const titleRef = useRef(null)
+  const descriptionRef = useRef(null)
 
-        titleRef.current.value = ''
-        titleRef.current.focus()
-        descriptionRef.current.value = ''
-        }
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const title = titleRef.current.value.trim()
+    const description = descriptionRef.current.value.trim()
+
+    if (!title) return
+
+    addTodo(title, description)
+
+    titleRef.current.value = ""
+    descriptionRef.current.value = ""
+    titleRef.current.focus()
+  }
 
   return (
-    <div className="flex flex-col gap-2 justify-start">
-        <label htmlFor="Title">Title</label>
-        <input type="text" id="Title" placeholder="Enter title..." ref={titleRef}/>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-2 justify-start"
+    >
+      <label htmlFor="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        placeholder="Enter title..."
+        ref={titleRef}
+        required
+      />
 
-        <label htmlFor="Description">Description</label>
-        <input type="text" id="Description" placeholder="Enter description" ref={descriptionRef}/>   
+      <label htmlFor="description">Description</label>
+      <input
+        id="description"
+        type="text"
+        placeholder="Enter description..."
+        ref={descriptionRef}
+      />
 
-        <button className="border-2 rounded-2xl hover:border-amber-100 cursor-pointer" onClick={() => handleAddTodo()}>Add</button>       
-    </div>
+      <button
+        type="submit"
+        className="border-2 rounded-2xl hover:border-amber-100 cursor-pointer"
+      >
+        Add
+      </button>
+    </form>
   )
 }
 
