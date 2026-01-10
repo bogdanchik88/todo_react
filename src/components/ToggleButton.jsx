@@ -3,8 +3,8 @@ import { Check, X } from "lucide-react"
 const ToggleButton = ({completed, onToggle} = props) => {
   return (
     <button
-    onClick={onToggle}
-    className="relative size-5"
+        onClick={onToggle}
+        className="relative size-6 cursor-pointer"
     >
     {/* Галочка */}
     <Check
@@ -32,7 +32,7 @@ const ToggleButton = ({completed, onToggle} = props) => {
         active:scale-100
         ${
             completed
-            ? "opacity-0 scale-75 pointer-events-none rotate-90"
+            ? "opacity-0 scale-75 pointer-events-none -rotate-90"
             : "opacity-100 scale-100 pointer-events-auto"
         }
         `}
