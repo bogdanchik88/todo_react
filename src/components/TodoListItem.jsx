@@ -1,4 +1,6 @@
+import { Check, X } from "lucide-react"
 import useTodosStore from "../store/useTodosStore"
+import ToggleButton from "./ToggleButton"
 
 const TodoListItem = ({id, title, description, completed} = props) => {
 
@@ -7,9 +9,12 @@ const TodoListItem = ({id, title, description, completed} = props) => {
 
   return (
     <div className='flex gap-2'>
-      <span>{title}</span>
-      <span>{description}</span>
-      <input type="checkbox" checked={completed} onChange={() => toggleTodo(id)}/>
+      <p>{title}</p>
+
+      <p>{description}</p>
+
+      <ToggleButton completed={completed} onToggle={() => toggleTodo(id)}/>
+
       <button className="cursor-pointer bg-red-400 px-2 py-1 rounded-2xl" onClick={() => deleteTodo(id)}>Delete</button>
     </div>
   )
