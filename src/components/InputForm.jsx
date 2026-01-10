@@ -78,9 +78,12 @@ const InputForm = () => {
             className="
               border-2 border-border
               px-4 py-1
+              h-16
+              max-h-32
               rounded-2xl
               outline-none
               w-[75%]
+              overflow-y-auto
               text-primary
               placeholder-border
               focus:border-primary
