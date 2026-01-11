@@ -1,1 +1,0 @@
-A simple React todo app with Tailwind CSS and Zustand state management
