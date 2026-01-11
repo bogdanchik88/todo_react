@@ -1,4 +1,3 @@
-import React from 'react'
 import useTodosStore from "../store/useTodosStore"
 import TodoListItem from './TodoListItem'
 

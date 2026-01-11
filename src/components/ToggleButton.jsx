@@ -10,7 +10,7 @@ const ToggleButton = ({completed, onToggle} = props) => {
     <Check
         className={`
         absolute inset-0
-        text-success
+        text-green-400
         transition-all duration-300 ease-in-out
         hover:scale-[120%]
         active:scale-100
@@ -26,7 +26,7 @@ const ToggleButton = ({completed, onToggle} = props) => {
     <X
         className={`
         absolute inset-0
-        text-danger
+        text-red-400
         transition-all duration-300 ease-in-out
         hover:scale-[120%]
         active:scale-100
